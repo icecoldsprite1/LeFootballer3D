@@ -1,40 +1,37 @@
 extends KinematicBody
 
 var velocity = Vector3.ZERO
+var snap_vector = Vector3.DOWN
 var max_speed = 50
-var acceleration = 2000
-var friction = 1000
+#var acceleration = 2000
+#var friction = 1000
+var jump_strength = 30
+var gravity = 100
+var rotation_speed = 10
 
 func _physics_process(delta: float) -> void:
-	
-#	if Input.is_action_pressed("right") and Input.is_action_pressed("left"):
-#		velocity.x = 0
-#	elif Input.is_action_pressed("right"):
-#		velocity.x = speed
-#	elif Input.is_action_pressed("left"):
-#		velocity.x = -speed
-#	else:
-#		velocity.x = lerp(velocity.x, 0, 0.1)
-#
-#	if Input.is_action_pressed("forward") and Input.is_action_pressed("backward"):
-#		velocity.z = 0
-#	elif Input.is_action_pressed("forward"):
-#		velocity.z = -speed
-#	elif Input.is_action_pressed("backward"):
-#		velocity.z = speed
-#	else:
-#		velocity.z = lerp(velocity.z, 0, 0.1)
 
-	var input_vector = Vector3.ZERO
-	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	input_vector.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
-	input_vector = input_vector.normalized()
+	var move_direction: Vector3 = Vector3.ZERO
+	move_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	move_direction.z = Input.get_action_strength("backward") - Input.get_action_strength("forward")
+	move_direction = move_direction.rotated(Vector3.UP, $SpringArm.rotation.y).normalized()
 	
-	if input_vector != Vector3.ZERO:
-		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
-	else:
-		velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+	velocity.x = move_direction.x * max_speed
+	velocity.z = move_direction.z * max_speed
+	velocity.y -= gravity * delta
+	
+	var just_landed: bool = is_on_floor() and snap_vector == Vector3.ZERO
+	var is_jumping: bool = is_on_floor() and Input.is_action_just_pressed("jump")
+	if is_jumping:
+		velocity.y = jump_strength
+		snap_vector = Vector3.ZERO
+	elif just_landed:
+		snap_vector = Vector3.DOWN
+	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true)
+	
+	if velocity.length() > 0.2:
+		var look_direction = Vector2(velocity.z, velocity.x)
+		rotation.y = lerp_angle(rotation.y, look_direction.angle(), rotation_speed * delta)
 		
-	velocity = move_and_slide(velocity)
-#	move_and_slide(velocity)
-
+func _process(delta: float) -> void:
+	$SpringArm.translation = translation

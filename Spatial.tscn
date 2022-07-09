@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Environment/new_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player/PlayerTest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Textures/Grass001_1K_NormalGL.jpg" type="Texture" id=3]
 [ext_resource path="res://Textures/Grass001_1K_Roughness.jpg" type="Texture" id=4]
@@ -37,7 +36,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014328, -7.62939e-06, 0.025
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19663, 10.2251, -4.52456 )
 
 [node name="Ball" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06707, 0, 7.85804 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09032, 0, 7.94556 )
+mass = 100.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Ball"]
 shape = SubResource( 1 )
@@ -47,7 +47,8 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Ball2" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25886, 0, 7.85804 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23561, 0, 7.94556 )
+mass = 100.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Ball2"]
 shape = SubResource( 1 )
@@ -57,7 +58,8 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Ball3" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25886, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23561, 0, 0.0875244 )
+mass = 100.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Ball3"]
 shape = SubResource( 1 )
@@ -67,6 +69,8 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Ball4" type="RigidBody" parent="Objects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0232468, 0, 0.0875244 )
+mass = 100.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Ball4"]
 shape = SubResource( 1 )
@@ -76,7 +80,8 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Square" type="RigidBody" parent="Objects"]
-transform = Transform( 0.674238, 0.738514, 0, -0.738514, 0.674238, 0, 0, 0, 1, 1.06707, 2.3838, 7.85804 )
+transform = Transform( 0.674238, 0.738514, 0, -0.738514, 0.674238, 0, 0, 0, 1, 1.09032, 2.3838, 7.94556 )
+mass = 100.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Square"]
 shape = SubResource( 5 )
@@ -84,18 +89,6 @@ shape = SubResource( 5 )
 [node name="MeshInstance" type="MeshInstance" parent="Objects/Square"]
 mesh = SubResource( 6 )
 material/0 = null
-
-[node name="PlayerTest" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.5, 3, 0 )
-
-[node name="CameraTarget" type="Spatial" parent="PlayerTest"]
-transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 10, 36 )
-visible = false
-
-[node name="Camera" type="Camera" parent="PlayerTest"]
-transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 15, 40 )
-environment = ExtResource( 1 )
-far = 1000.0
 
 [node name="Floor" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -107,12 +100,6 @@ material/0 = SubResource( 7 )
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 shape = SubResource( 4 )
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 20 )
-visible = false
-target = NodePath("../PlayerTest/CameraTarget")
-speed = 10.0
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 14.974, 0 )
 light_energy = 0.5
@@ -123,3 +110,6 @@ transform = Transform( -2.62268e-07, 0, 6, 0, 6, 0, -6, 0, -2.62268e-07, 0, 8, 8
 
 [node name="goal2" parent="." instance=ExtResource( 6 )]
 transform = Transform( -2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, 0, 8, -80 )
+
+[node name="PlayerTest" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 3, 0 )
