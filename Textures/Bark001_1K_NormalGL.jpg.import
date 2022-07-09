@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Grass001_1K_Color.jpg-5e7660bae13a854a5a830ee36ab7d6ac.s3tc.stex"
-path.etc2="res://.import/Grass001_1K_Color.jpg-5e7660bae13a854a5a830ee36ab7d6ac.etc2.stex"
+path.s3tc="res://.import/Bark001_1K_NormalGL.jpg-26731eb25ab6da0c554e96b4fa3f7c55.s3tc.stex"
+path.etc2="res://.import/Bark001_1K_NormalGL.jpg-26731eb25ab6da0c554e96b4fa3f7c55.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Grass001_1K_Color.jpg"
-dest_files=[ "res://.import/Grass001_1K_Color.jpg-5e7660bae13a854a5a830ee36ab7d6ac.s3tc.stex", "res://.import/Grass001_1K_Color.jpg-5e7660bae13a854a5a830ee36ab7d6ac.etc2.stex" ]
+source_file="res://Textures/Bark001_1K_NormalGL.jpg"
+dest_files=[ "res://.import/Bark001_1K_NormalGL.jpg-26731eb25ab6da0c554e96b4fa3f7c55.s3tc.stex", "res://.import/Bark001_1K_NormalGL.jpg-26731eb25ab6da0c554e96b4fa3f7c55.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
