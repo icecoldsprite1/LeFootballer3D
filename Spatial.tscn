@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Trees/tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlayerTest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Grass/Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shooting/VectorCreator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shooting/Ball.gd" type="Script" id=5]
 [ext_resource path="res://Goals/goal.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SphereShape" id=1]
@@ -21,7 +23,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19663, 10.2251, -4.52456 )
 
 [node name="Ball" type="RigidBody" parent="Objects"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09032, 0, 7.94556 )
-mass = 100.0
+mass = 10.0
+gravity_scale = 2.0
+script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Ball"]
 shape = SubResource( 1 )
@@ -129,3 +133,7 @@ transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 3, 0 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="VectorCreator" parent="." instance=ExtResource( 4 )]
+
+[connection signal="vector_created" from="VectorCreator" to="Objects/Ball" method="shoot"]

@@ -35,3 +35,6 @@ func _physics_process(delta: float) -> void:
 		
 func _process(delta: float) -> void:
 	$SpringArm.translation = translation
+
+func shoot(vector) -> void:
+	pass # Replace with function body.
