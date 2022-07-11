@@ -11,6 +11,7 @@ size = Vector3( 400, 2, 400 )
 albedo_color = Color( 0.721569, 0.721569, 0.721569, 1 )
 albedo_texture = ExtResource( 3 )
 roughness_texture = ExtResource( 1 )
+roughness_texture_channel = 3
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 2 )

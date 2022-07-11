@@ -33,8 +33,8 @@ func _physics_process(delta: float) -> void:
 		var look_direction = Vector2(velocity.z, velocity.x)
 		rotation.y = lerp_angle(rotation.y, look_direction.angle(), rotation_speed * delta)
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$SpringArm.translation = translation
 
-func shoot(vector) -> void:
+func shoot(_vector) -> void:
 	pass # Replace with function body.

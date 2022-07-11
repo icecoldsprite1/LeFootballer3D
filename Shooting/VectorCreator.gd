@@ -37,11 +37,11 @@ func _input(event: InputEvent) -> void:
 		# print("vector: " + str(vector))
 		update()
 		
-func _on_input_event(viewport: Object, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
 		touch_down = true
 		pos_start = event.position
-	if event.is_action_released("left_click"):
+	if event.is_action_released("left_click") :
 		touch_down = false
 		emit_signal("vector_created", vector)
 		reset()
