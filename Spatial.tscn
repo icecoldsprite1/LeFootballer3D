@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Trees/tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlayerTest.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://Goals/goal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Footballer/footballer.tres" type="ArrayMesh" id=7]
 [ext_resource path="res://Opponents/TestWall.gd" type="Script" id=8]
+[ext_resource path="res://Menu/Coutdown.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Menu/Score.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Menu/Results.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Opponents/TestWall2.gd" type="Script" id=12]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -23,7 +27,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014328, -7.62939e-06, 0.025
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19663, 10.2251, -4.52456 )
 
 [node name="Ball" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2964, 0, -23.3678 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.35806, -7.43021, -48.3441 )
 mass = 10.0
 gravity_scale = 3.0
 script = ExtResource( 5 )
@@ -32,42 +36,6 @@ script = ExtResource( 5 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Objects/Ball"]
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="Ball2" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23561, 0, 7.94556 )
-visible = false
-mass = 100.0
-
-[node name="CollisionShape" type="CollisionShape" parent="Objects/Ball2"]
-shape = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Objects/Ball2"]
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="Ball3" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23561, 0, 0.0875244 )
-visible = false
-mass = 100.0
-
-[node name="CollisionShape" type="CollisionShape" parent="Objects/Ball3"]
-shape = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Objects/Ball3"]
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="Ball4" type="RigidBody" parent="Objects"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0232468, 0, 0.0875244 )
-visible = false
-mass = 100.0
-
-[node name="CollisionShape" type="CollisionShape" parent="Objects/Ball4"]
-shape = SubResource( 1 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Objects/Ball4"]
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -90,7 +58,7 @@ transform = Transform( 0.743145, 0, 1.33826, 0, 2, 0, -0.669131, 0, 1.48629, 64.
 transform = Transform( -0.517638, 0, 1.93185, 0, 2, 0, -1.93185, 0, -0.517638, 64.3953, -7.2251, -56.1974 )
 
 [node name="tree8" parent="Objects" instance=ExtResource( 1 )]
-transform = Transform( 1.00881, 0, 0, 0, 1.00881, 0, 0, 0, 1.00881, 42.9559, -7.2251, -131.125 )
+transform = Transform( 1.00881, 0, 0, 0, 1.00881, 0, 0, 0, 1.00881, 89.0948, -7.2251, -156.056 )
 
 [node name="tree9" parent="Objects" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1.38862, 0, 0, 0, 1, -79.0499, -7.2251, -131.125 )
@@ -102,10 +70,10 @@ transform = Transform( 1.2502, 0, 0, 0, 1.84921, 0, 0, 0, 1, -79.0499, -7.2251, 
 transform = Transform( 1.00866, 0, 0, 0, 2.12837, 0, 0, 0, 1.00866, -3.01484, -7.2251, -176.785 )
 
 [node name="tree12" parent="Objects" instance=ExtResource( 1 )]
-transform = Transform( 1.62416, 0, 0, 0, 1, 0, 0, 0, 1.62416, -41.0532, -7.2251, -146.543 )
+transform = Transform( 1.62416, 0, 0, 0, 1, 0, 0, 0, 1.62416, -125.573, -7.21897, -171.276 )
 
 [node name="tree13" parent="Objects" instance=ExtResource( 1 )]
-transform = Transform( -1.73418, 0, 1.00123, 0, 2.00246, 0, -1.00123, 0, -1.73418, -41.0532, -7.2251, 139.512 )
+transform = Transform( -1.73418, 0, 1.00123, 0, 2.00246, 0, -1.00123, 0, -1.73418, -41.2931, -7.2251, 139.512 )
 
 [node name="tree14" parent="Objects" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.442, -7.2251, 139.512 )
@@ -119,10 +87,11 @@ shadow_enabled = true
 transform = Transform( -2.62268e-07, 0, 6, 0, 6, 0, -6, 0, -2.62268e-07, 0, 8, 80 )
 
 [node name="goal2" parent="." instance=ExtResource( 6 )]
-transform = Transform( -2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, 0, 8, -80 )
+transform = Transform( -2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, 0, 8, -142.679 )
+script = null
 
 [node name="PlayerTest" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 3, 0 )
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0.240067, 3, -66.9499 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -130,11 +99,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="VectorCreator" parent="." instance=ExtResource( 4 )]
 
 [node name="TestWall" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0172291, -0.0281906, -0.000762939 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 64.5525 )
 script = ExtResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="TestWall"]
-transform = Transform( 2.32279, 0, 0, 0, 1.88477, 0, 0, 0, 1.00493, 6.37915, 3.25544, 58.5828 )
+transform = Transform( 2.32279, 0, 0, 0, 1.88477, 0, 0, 0, 1.00493, 0, 0, 0 )
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
@@ -145,7 +114,41 @@ material/5 = null
 material/6 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="TestWall"]
-transform = Transform( 2.32652, 0, 0, 0, 1.46306, 0, 0, 0, 1, 9.0773, 6.51424, 57.9425 )
+transform = Transform( 2.32652, 0, 0, 0, 1.46306, 0, 0, 0, 1, 2.16715, 3.04982, 0 )
 shape = SubResource( 3 )
 
+[node name="TestWall2" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71045, 4.06037, 20.0838 )
+script = ExtResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="TestWall2"]
+transform = Transform( 2.32279, 0, 0, 0, 1.88477, 0, 0, 0, 1.00493, 0, 0, 0 )
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="TestWall2"]
+transform = Transform( 2.32652, 0, 0, 0, 1.46306, 0, 0, 0, 1, 2.16715, 3.04982, 0 )
+shape = SubResource( 3 )
+
+[node name="Coutdown" parent="." instance=ExtResource( 9 )]
+rect_scale = Vector2( 0.75, 0.75 )
+
+[node name="Score" parent="." instance=ExtResource( 10 )]
+margin_top = -320.0
+margin_bottom = -267.0
+rect_scale = Vector2( 0.75, 0.75 )
+
+[node name="Results" parent="." instance=ExtResource( 11 )]
+visible = false
+
 [connection signal="vector_created" from="VectorCreator" to="Objects/Ball" method="shoot"]
+[connection signal="times_up" from="Coutdown" to="Results/Score" method="_on_Coutdown_times_up"]
+
+[editable path="Coutdown"]
+[editable path="Results"]

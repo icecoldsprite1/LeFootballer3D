@@ -2,6 +2,7 @@ extends RigidBody
 
 onready var player: KinematicBody = get_parent().get_parent().get_node("PlayerTest")
 var origin = transform.origin
+var rng = RandomNumberGenerator.new()
 
 func shoot(vector: Vector2) -> void:
 	print("force: " + str(vector))
@@ -12,7 +13,8 @@ func shoot(vector: Vector2) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
-		translation = origin
+		rng.randomize()
+		translation = origin + Vector3(rng.randi_range(-50, 50), 0, rng.randi_range(-50, 50))
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		sleeping = false
